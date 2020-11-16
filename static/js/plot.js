@@ -19,6 +19,28 @@ var microbes = {
 
 var data = [microbes];
 
+var data = [
+  {
+    type: "bar",
+    x: [45, 46, 47, 49, 50, 65, 75, 119, 125, 155],
+
+    y: [
+      "OTU 1977",
+      "OTU 2318",
+      "OTU 189",
+      "OTU 352",
+      "OTU 1189",
+      "OTU 41",
+      "OTU 2264",
+      "OTU 482",
+      "OTU 2859",
+      "OTU 1167",
+    ],
+    orientation: "h",
+  },
+];
+
+// Layout provides title to chart, font, and hovertext for chart;
 var layout = {
   title: "'Horizontal Bar' Chart",
   font: {
