@@ -1,3 +1,6 @@
+// Used D3 to read samples.json File
+// Used prettify to format data to be visibly readable in rows
+
 function naval(ids) {
   d3.json("samples.json").then((microb) => {
     var metadata = microb.metadata;
@@ -10,6 +13,8 @@ function naval(ids) {
     });
   });
 }
+
+// This function was inserted to help with plotting sample_values and otu_ids for horizontal bar:
 
 function compareseccolumn(a, b) {
   if (a[1] == b[1]) {
@@ -42,6 +47,8 @@ function optionChanged(val) {
     var id_1 = bellybutton[metaindex];
     naval(id_1);
 
+    // These variables were created to help control the size and color of the bubbles:
+
     var barxvalues = [];
     var baryvalues = [];
     var bubblexvalues = [];
@@ -56,6 +63,8 @@ function optionChanged(val) {
       bubbleyvalues.push(tracker.sample_values[i]);
       hovertext.push(tracker.otu_labels[i]);
 
+      // This if statement was created to change the color of the bubble depending on otu_ids:
+
       if (tracker.otu_ids[i] < 1000) {
         bubblecolors.push("rgb(93, 164, 214)");
       } else if (tracker.otu_ids[i] < 2000) {
@@ -66,9 +75,14 @@ function optionChanged(val) {
         bubblecolors.push("rgb(255, 65, 54)");
       }
     }
+
+    // Console.log to test bubblecolors before going forward in writing additional code:
+
     console.log(bubblecolors);
 
     var bar_chart = document.getElementById("bar");
+
+    //                                                                        Created horizontal bar chart:
 
     var graphdata = [
       {
@@ -109,6 +123,8 @@ function optionChanged(val) {
       height: 600,
       width: 1400,
     };
+
+    // Plotly to print the plot:
 
     Plotly.newPlot("bar", graphdata, layout);
     Plotly.newPlot("bubble", bubbledata, bubblelayout);
